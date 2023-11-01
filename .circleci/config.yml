@@ -132,6 +132,7 @@ jobs:
           aws-region: ${AWS_REGION}
       - kubernetes/get-rollout-status:
           show-kubectl-command: true
+          watch-timeout: 30m
           resource-name: deployment/vinhpham-capstone-deployment
       - slack/notify:
           event: pass
