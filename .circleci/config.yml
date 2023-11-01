@@ -69,9 +69,10 @@ jobs:
           cluster-name: ${EKS_CLUSTER_NAME}
           aws-region: ${AWS_REGION}
       - kubernetes/create-or-update-resource:
+          no_output_timeout: 30m  
           resource-file-path: k8s.yml
           show-kubectl-command: true
-          get-rollout-status: false
+          get-rollout-status: true
           resource-name: deployment/vinhpham-capstone-deployment
       - run:
           name: "Check the nodes"
@@ -131,6 +132,7 @@ jobs:
           cluster-name: ${EKS_CLUSTER_NAME}
           aws-region: ${AWS_REGION}
       - kubernetes/get-rollout-status:
+          no_output_timeout: 30m  
           show-kubectl-command: true
           resource-name: deployment/vinhpham-capstone-deployment
       - slack/notify:
