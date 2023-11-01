@@ -74,6 +74,20 @@ jobs:
           get-rollout-status: true
           resource-name: deployment/vinhpham-capstone-deployment
       - run:
+          name: Provision instance
+          command: |
+              sudo apt-get update -y
+              sudo apt-get install awscli groff -y
+              pip install awscli
+              sudo curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.12/2020-11-02/bin/linux/amd64/kubectl
+              sudo chmod +x ./kubectl
+              mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+              echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+              aws configure set default.region ${AWS_REGION}
+              aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
+              aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
+              aws eks --region ${AWS_REGION} update-kubeconfig --name my-existing-cluster
+      - run:
           name: "Check the nodes"
           command: |
             kubectl get nodes
