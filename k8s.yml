@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: truonghpd-capstone-deployment
-  name: truonghpd-capstone-deployment
+    app: vinhpham-capstone-deployment
+  name: vinhpham-capstone-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: truonghpd-capstone-deployment
+      app: vinhpham-capstone-deployment
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -19,7 +19,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: truonghpd-capstone-deployment
+        app: vinhpham-capstone-deployment
     spec:
       terminationGracePeriodSeconds: 60
       affinity:
@@ -30,14 +30,14 @@ spec:
                   - key: "app"
                     operator: In
                     values:
-                      - truonghpd-capstone-deployment
+                      - vinhpham-capstone-deployment
                   - key: "temporary"
                     operator: In
                     values:
                       - "true"
               topologyKey: "kubernetes.io/hostname"
       containers:
-        - image: hpdtruong/capstone-docker
+        - image: drkhanhvinh/capstone-docker
           name: udacity
           imagePullPolicy: Always
           securityContext:
@@ -69,8 +69,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: truonghpd-capstone-deployment
-  name: truonghpd-capstone-service
+    app: vinhpham-capstone-deployment
+  name: vinhpham-capstone-service
 spec:
   ports:
     - name: "80"
@@ -78,7 +78,7 @@ spec:
       protocol: TCP
       targetPort: 80
   selector:
-    app: truonghpd-capstone-deployment
+    app: vinhpham-capstone-deployment
   type: LoadBalancer
 status:
   loadBalancer: {}
@@ -88,14 +88,14 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   creationTimestamp: null
-  name: truonghpd-capstone-deployment
+  name: vinhpham-capstone-deployment
 spec:
   maxReplicas: 5
   minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: truonghpd-capstone-deployment
+    name: vinhpham-capstone-deployment
   targetCPUUtilizationPercentage: 90
 status:
   currentReplicas: 0

@@ -72,7 +72,7 @@ jobs:
           resource-file-path: k8s.yml
           show-kubectl-command: true
           get-rollout-status: true
-          resource-name: deployment/truonghpd-capstone-deployment
+          resource-name: deployment/vinhpham-capstone-deployment
       - run:
           name: "Check the nodes"
           command: |
@@ -88,7 +88,7 @@ jobs:
       - run:
           name: "Check the service"
           command: |
-            kubectl get service/truonghpd-capstone-service
+            kubectl get service/vinhpham-capstone-service
       - slack/notify:
           event: pass
           template: success_tagged_deploy_1
@@ -110,7 +110,7 @@ jobs:
       - run:
           name: "Curl to service to check for health"
           command: |
-            SVC_HOSTNAME=$(kubectl get service/truonghpd-capstone-service -o jsonpath="{.status.loadBalancer.ingress[0].hostname}")
+            SVC_HOSTNAME=$(kubectl get service/vinhpham-capstone-service -o jsonpath="{.status.loadBalancer.ingress[0].hostname}")
             curl $SVC_HOSTNAME
       - slack/notify:
           event: pass
@@ -132,7 +132,7 @@ jobs:
           aws-region: ${AWS_REGION}
       - kubernetes/get-rollout-status:
           show-kubectl-command: true
-          resource-name: deployment/truonghpd-capstone-deployment
+          resource-name: deployment/vinhpham-capstone-deployment
       - slack/notify:
           event: pass
           template: basic_success_1
