@@ -63,9 +63,9 @@ jobs:
     steps:
       - checkout
       - kubernetes/install-kubectl:
-          kubectl-version: "v1.21.13"
+          kubectl-version: "v1.28"
       - aws-eks/update-kubeconfig-with-authenticator:
-          kubectl-version: "v1.21.13"
+          kubectl-version: "v1.28"
           cluster-name: ${EKS_CLUSTER_NAME}
           aws-region: ${AWS_REGION}
       - kubernetes/create-or-update-resource:
