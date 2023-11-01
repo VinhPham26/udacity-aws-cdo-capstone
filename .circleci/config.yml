@@ -76,6 +76,7 @@ jobs:
       - run:
           name: "Check the nodes"
           command: |
+            aws eks update-kubeconfig --name {EKS_CLUSTER_NAME}
             kubectl get nodes
       - run:
           name: "Check the deployments"
