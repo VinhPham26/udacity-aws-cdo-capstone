@@ -131,7 +131,6 @@ jobs:
           cluster-name: ${EKS_CLUSTER_NAME}
           aws-region: ${AWS_REGION}
       - kubernetes/get-rollout-status:
-          no_output_timeout: 30m  
           show-kubectl-command: true
           resource-name: deployment/vinhpham-capstone-deployment
       - slack/notify:
