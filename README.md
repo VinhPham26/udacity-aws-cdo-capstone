@@ -8,6 +8,9 @@ This is final project of Udacity Cloud DevOps Engineer Nanodegree Program. In th
 - Building Kubernetes clusters
 - Building Docker containers in pipelines
 
+## Github Link
+[https://github.com/VinhPham26/udacity-aws-cdo-capstone](https://github.com/VinhPham26/udacity-aws-cdo-capstone)
+
 ## Application
 
 This is a simple "Hello, World!" site
@@ -31,6 +34,7 @@ Some messages when CircleCI notify to Slack:
 2. Deploy our app
 
 - Setup the EKS cluster: I've used `ekscli` to setup the cluster automatically through the pipeline `create-cluster` job
+- ![EKS](screenshots/cloud-formation.png)
 
 - Try some Hello, World
 
@@ -39,10 +43,15 @@ Some messages when CircleCI notify to Slack:
 
 - Linting the Dockerfile
 
+Lint failed:
+![Lint failed](screenshots/lint-failed.png)
+
 Lint succeed:
 ![Lint succeed](screenshots/lint-succeed.png)
 
 - Build and push the image to dockerhub
+![Docker](screenshots/docker.png)
+Link to the dockerhub: [Link](https://hub.docker.com/repository/docker/drkhanhvinh/capstone/general)
 
 - Create and deploy k8s resources
 
