@@ -71,7 +71,7 @@ jobs:
       - kubernetes/create-or-update-resource:
           resource-file-path: k8s.yml
           show-kubectl-command: true
-          get-rollout-status: true
+          get-rollout-status: false
           resource-name: deployment/vinhpham-capstone-deployment
       - run:
           name: "Check the nodes"
